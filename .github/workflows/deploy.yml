@@ -1,3 +1,4 @@
+
 # 这是一个用于将 Vite 项目部署到 GitHub Pages 的工作流
 name: Deploy to GitHub Pages
 
@@ -32,10 +33,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: 'npm'
+          # cache: 'npm' # 移除缓存配置，因为如果没有 package-lock.json 会导致报错
 
       - name: Install dependencies (安装依赖)
-        run: npm ci
+        run: npm install # 使用 npm install 代替 npm ci，允许在没有锁文件的情况下构建
 
       - name: Build (构建项目)
         run: npm run build
